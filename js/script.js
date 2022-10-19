@@ -18,6 +18,7 @@
 
         //Genero numeri random per riempire Arraydue
         let arrayDue =[];
+        
         while(arrayDue.length < 5){
             let numbersRandom = getRndInteger(1,50);
             if(!arrayDue.includes(numbersRandom)){
@@ -31,15 +32,15 @@
         
         
         const numRdnd = document.querySelector(".numbers");
+        //Stampo array random
         numRdnd.innerHTML = arrayDue;
         
         
         console.log(numRdnd);
         
-        // Function SetTimeout che mi fa scomparire array dopo 8 secondi
+        
         function myFunction() {
             numRdnd.innerHTML = "";
-        
             function secFunction() {
                 numRdnd.innerHTML = "";
             
@@ -47,33 +48,51 @@
                     const question = parseInt(prompt("Dammi il primo numero"));
                     arrayBase.push(question);
                 }
-                
-                console.log(arrayBase); 
-                const a = arrayBase.toString();
-                console.log(a);
-                const b = arrayDue.toString();
-                console.log(b);
-                
-                // devo trovare un modo migliore?
-                if(a === b){
-                    numRdnd.innerHTML = "Win"
-                }else{
-                    numRdnd.innerHTML = "Lose";
-                } 
-            }
             
+            //Richiamo funzione che compara i numeri
+            const compareNumber = setTimeout(controlsCompare,500);
+            console.log(compareNumber);
+            }
             const secTimeout = setTimeout(secFunction, 500);
-        
-        
-        
-        
         }
-        
-        const myTimeout = setTimeout(myFunction, 8000);
-        
-        
+        //Funzione timeout 20 secondi
+        const myTimeout = setTimeout(myFunction, 20000);
         
         
+        
+        
+        
+        /**
+         * Description Funzione che compara array di numeri random e array indicati dall'utente e restituisce array numeri
+         * 
+         * @returns {array} // numero random
+         */
+        function controlsCompare (){
+            let controls = [];
+            for(let n = 0; n < arrayDue.length; n++){
+                if(arrayBase[0]==arrayDue[n]){
+                    controls.push(arrayBase[0]);
+                }
+                if(arrayBase[1]==arrayDue[n]){
+                    controls.push(arrayBase[1]);
+                }
+                if(arrayBase[2]==arrayDue[n]){
+                    controls.push(arrayBase[2]);
+                }
+                if(arrayBase[3]==arrayDue[n]){
+                    controls.push(arrayBase[3]);
+                }
+                if(arrayBase[4]==arrayDue[n]){
+                    controls.push(arrayBase[4]);
+                    numRdnd.innerHTML = controls;
+
+                }else{
+                    numRdnd.innerHTML="you lose";
+                }
+                
+            }
+            console.log(controls);
+        }
         
         /**
          * Description
