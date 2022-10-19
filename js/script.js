@@ -87,7 +87,7 @@
                     numRdnd.innerHTML = controls;
 
                 }else{
-                    numRdnd.innerHTML="you lose";
+                    numRdnd.innerHTML=`You lose! Hai scritto ${arrayBase} mentre i numeri erano ${arrayDue}`;
                 }
                 
             }
